@@ -1,11 +1,15 @@
-import { StyleSheet, View, Text, SafeAreaView, Image } from "react-native";
-import React, { useLayoutEffect } from "react";
+import { StyleSheet, View, Text, SafeAreaView, Image, Modal } from "react-native";
+import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Button, ButtonGroup, withTheme } from "@rneui/themed";
 import { UserIcon } from "react-native-heroicons/outline";
+import { TaskModal } from "../components/TaskModal";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [time, setTime] = useState(null);
+  const [timesArray, setTimesArray] = useState([5, 10, 15, 30, 60]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -13,6 +17,18 @@ const HomeScreen = () => {
       headerShown: false,
     });
   }, []);
+
+  const showTidyItem = (time) => {
+    setModalVisible(true);
+    setTime(time);
+    console.log("showTidyItem was exicuted");
+  };
+
+  const closeTidyItem = () => {
+    setModalVisible(false);
+    setTime(null);
+    console.log("closeTidyItem was exicuted");
+  };
 
   return (
     <>
@@ -34,46 +50,27 @@ const HomeScreen = () => {
       {/* Time selector */}
       <View className="items-center pt-10">
         <Text className="font-bold text-xl pb-5">How much time do you have?</Text>
+        <TaskModal visible={modalVisible} showTidyItem={showTidyItem} closeTidyItem={closeTidyItem} time={time} />
         <Button
-          title="5 minutes"
+          title={"Add Time"}
           buttonStyle={styles.buttonStyle}
           type="outline"
           raised
           titleStyle={styles.titleStyle}
           containerStyle={styles.containerStyle}
+          onPress={() => setTimesArray([...timesArray, 120])}
         />
-        <Button
-          title="10 minutes"
-          buttonStyle={styles.buttonStyle}
-          type="outline"
-          raised
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.containerStyle}
-        />
-        <Button
-          title="15 minutes"
-          buttonStyle={styles.buttonStyle}
-          type="outline"
-          raised
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.containerStyle}
-        />
-        <Button
-          title="30 minutes"
-          buttonStyle={styles.buttonStyle}
-          type="outline"
-          raised
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.containerStyle}
-        />
-        <Button
-          title="60 minutes"
-          buttonStyle={styles.buttonStyle}
-          type="outline"
-          raised
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.containerStyle}
-        />
+        {timesArray.map((time) => (
+          <Button
+            title={`${time} minutes`}
+            buttonStyle={styles.buttonStyle}
+            type="outline"
+            raised
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.containerStyle}
+            onPress={() => showTidyItem(time)}
+          />
+        ))}
       </View>
     </>
   );
