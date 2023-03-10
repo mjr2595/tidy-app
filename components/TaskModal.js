@@ -15,10 +15,13 @@ export const TaskModal = ({ visible, showTidyItem, closeTidyItem, time }) => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World! {time}</Text>
-            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => closeTidyItem()}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+          <View className="bg-white" style={styles.modalView}>
+            <Text style={styles.modalText}>How about this {time} minute task?</Text>
+            <Pressable className="bg-blue-500" style={[styles.button]} onPress={() => closeTidyItem()}>
+              <Text style={styles.textStyle}>yah</Text>
+            </Pressable>
+            <Pressable className="bg-red-500" style={[styles.button]} onPress={() => closeTidyItem()}>
+              <Text style={styles.textStyle}>nah</Text>
             </Pressable>
           </View>
         </View>
@@ -36,10 +39,8 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -53,9 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
+    margin: 10,
   },
   textStyle: {
     color: "white",
