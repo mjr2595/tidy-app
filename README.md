@@ -7,4 +7,4 @@ The idea is to assist with quick tidying up around your home. You pick how much 
 ### Don't think. Tidy!
 
 Check it out the Expo Snack:
-https://snack.expo.dev/@mjr2595/tidy-app (mmm... tasty)
+https://snack.expo.dev/@mjr2595/tidy-app?platform=ios (mmm... tasty)
