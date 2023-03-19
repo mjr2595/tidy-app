@@ -1,21 +1,25 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaView } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import TaskScreen from "./screens/TaskScreen";
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Time to Tidy!",
+          }}
+        />
+        <Stack.Screen name="TaskScreen" component={TaskScreen} options={{ title: "Here's a thing to do" }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
