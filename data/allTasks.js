@@ -1,4 +1,4 @@
-export const TASKS = [
+const allTasks = [
   {
     UUID: "a94b95c6-e7a5-4e5b-aa1d-0595fc7a1b65",
     title: "Write a blog post",
@@ -66,3 +66,5 @@ export const TASKS = [
     taskDuration: 30,
   },
 ];
+
+export default allTasks;
