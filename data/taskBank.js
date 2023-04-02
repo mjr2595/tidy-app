@@ -1,4 +1,4 @@
-const allTasks = [
+const taskBank = [
   {
     UUID: "a94b95c6-e7a5-4e5b-aa1d-0595fc7a1b65",
     title: "Write a blog post",
@@ -67,4 +67,4 @@ const allTasks = [
   },
 ];
 
-export default allTasks;
+export default taskBank;

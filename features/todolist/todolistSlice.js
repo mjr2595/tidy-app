@@ -1,33 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-import allTasks from "../../data/allTasks";
+import taskBank from "../../data/taskBank";
 
 const initialState = {
-  todoItems: allTasks,
-  timeRemaining: 60,
+  taskBank: taskBank,
+  todoList: taskBank,
+  availableTime: 0,
 };
 
-const todolistSlice = createSlice({
+const todoListSlice = createSlice({
   name: "todolist",
   initialState,
   reducers: {
     clearList: (state) => {
-      state.timeRemaining = 0;
-      state.todoItems = [];
+      state.availableTime = 0;
+      state.todoList = [];
     },
     removeTask: (state, action) => {
       const taskId = action.payload;
-      state.todoItems = state.todoItems.filter((task) => task.UUID !== taskId);
+      state.todoList = state.todoList.filter((task) => task.UUID !== taskId);
     },
   },
 });
 
 export const selectAllTasks = () => {
-  return allTasks;
+  return taskBank;
 };
 
 export const selectRandomTask = () => {
-  return allTasks[Math.floor(Math.random() * allTasks.length)];
+  return taskBank[Math.floor(Math.random() * taskBank.length)];
 };
 
-export const { clearList, removeTask } = todolistSlice.actions;
-export default todolistSlice.reducer;
+export const { clearList, removeTask } = todoListSlice.actions;
+export default todoListSlice.reducer;

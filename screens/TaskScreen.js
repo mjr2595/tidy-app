@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Button, Card } from "@rneui/themed";
-import { selectRandomTask } from "../features/todolist/todolistSlice";
+import { selectRandomTask } from "../features/todoList/todoListSlice";
 
 const TaskScreen = ({ navigation }) => {
   const taskToDo = selectRandomTask();

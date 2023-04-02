@@ -5,7 +5,7 @@ import { Button } from "@rneui/themed";
 const HomeScreen = ({ navigation }) => {
   const timeButtonOptions = [5, 10, 15, 30, 60];
   const dispatch = useDispatch();
-  const { todoItems, timeRemaining } = useSelector((store) => store.todolist);
+  const { todoTasks, timeRemaining } = useSelector((store) => store.todolist);
 
   if (timeRemaining <= 0) {
     return (
